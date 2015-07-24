@@ -1,0 +1,17 @@
+{
+    "addons": [
+        "heroku-postgresql"
+    ],
+    "buildpacks": [
+        {
+            "url": "https://github.com/heroku/heroku-buildpack-php#composer-env-var"
+        }
+    ],
+    "env": {
+        "COMPOSER": "composer-ci.json",
+        "YII_ENV": "heroku"
+    },
+    "scripts": {
+        "postdeploy": "tests/codeception/_app/yii migrate --migrationPath=src/migrations --interactive=0"
+    }
+}
